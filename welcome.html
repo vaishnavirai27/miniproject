@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome - Translation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 40px;
+            border-radius: 12px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .language-selection {
+            margin: 20px 0;
+        }
+
+        select {
+            padding: 12px;
+            font-size: 1rem;
+            background: #fff;
+            color: #333;
+            border-radius: 6px;
+            border: 2px solid #ddd;
+            width: 100%;
+            max-width: 300px;
+            margin: 10px auto;
+            transition: all 0.3s ease;
+        }
+
+        select:hover, select:focus {
+            border-color: #2575fc;
+            outline: none;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #6a11cb;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 90%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p, select {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Welcome to the Translation App!</h1>
+        <p>Get started by selecting a language translation direction:</p>
+        
+        <div class="language-selection">
+            <label for="language">Choose Translation Direction:</label>
+            <select id="language" onchange="handleLanguageChange()">
+                <option value="">Select Language</option>
+                {% for code, language in languages.items() %}
+                    <option value="en-to-{{ code }}">English to {{ language }}</option>
+                    <option value="{{ code }}-to-en">{{ language }} to English</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="start-btn">
+            <button id="startBtn" style="display:none" onclick="navigateToTranslation()">Start Translation</button>
+        </div>
+    </div>
+
+    <script>
+        function handleLanguageChange() {
+            const languageSelect = document.getElementById("language");
+            const startBtn = document.getElementById("startBtn");
+            startBtn.style.display = languageSelect.value ? "inline-block" : "none";
+        }
+
+        function navigateToTranslation() {
+            const selectedLanguage = document.getElementById("language").value;
+            if (selectedLanguage) {
+                window.location.href = `translation.html?lang=${selectedLanguage}`;
+            }
+        }
+    </script>
+
+</body>
+</html>

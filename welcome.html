@@ -113,10 +113,26 @@
             <label for="language">Choose Translation Direction:</label>
             <select id="language" onchange="handleLanguageChange()">
                 <option value="">Select Language</option>
-                {% for code, language in languages.items() %}
-                    <option value="en-to-{{ code }}">English to {{ language }}</option>
-                    <option value="{{ code }}-to-en">{{ language }} to English</option>
-                {% endfor %}
+                <option value="en-to-kn">English to Kannada</option>
+                <option value="kn-to-en">Kannada to English</option>
+                <option value="en-to-hi">English to Hindi</option>
+                <option value="hi-to-en">Hindi to English</option>
+                <option value="en-to-ta">English to Tamil</option>
+                <option value="ta-to-en">Tamil to English</option>
+                <option value="en-to-ml">English to Malayalam</option>
+                <option value="ml-to-en">Malayalam to English</option>
+                <option value="en-to-te">English to Telugu</option>
+                <option value="te-to-en">Telugu to English</option>
+                <option value="en-to-mr">English to Marathi</option>
+                <option value="mr-to-en">Marathi to English</option>
+                <option value="en-to-pa">English to Punjabi</option>
+                <option value="pa-to-en">Punjabi to English</option>
+                <option value="en-to-gu">English to Gujarati</option>
+                <option value="gu-to-en">Gujarati to English</option>
+                <option value="en-to-bn">English to Bengali</option>
+                <option value="bn-to-en">Bengali to English</option>
+                <option value="en-to-or">English to Odia</option>
+                <option value="or-to-en">Odia to English</option>
             </select>
         </div>
 
